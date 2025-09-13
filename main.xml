@@ -1,0 +1,29 @@
+<api xmlns="http://ws.apache.org/ns/synapse" name="main" context="/parallel">
+   <resource methods="POST" uri-template="/calls">
+      <inSequence>
+         <clone id="parallel_calls" sequential="true">
+            <target>
+               <sequence>
+                  <sequence key="first_sequence"/>
+               </sequence>
+            </target>
+            <target>
+               <sequence>
+                  <sequence key="second_sequence"/>
+               </sequence>
+            </target>
+         </clone>
+         <property name="results" scope="default">
+            <results xmlns=""/>
+         </property>
+         <aggregate id="parallel_calls">
+            <completeCondition>
+               <messageCount min="-1" max="-1"/>
+            </completeCondition>
+            <onComplete expression="$body/*" enclosingElementProperty="results">
+               <respond/>
+            </onComplete>
+         </aggregate>
+      </inSequence>
+   </resource>
+</api>
