@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="second_sequence" xmlns="http://ws.apache.org/ns/synapse">
+    <header name="SOAPAction" scope="transport" value="urn:echoInt"/>
+    <header name="Content-Type" scope="transport" value="text/xml; charset=&quot;utf-8&quot;"/>
+    <payloadFactory media-type="xml">
+        <format>
+            <echoInt xmlns="http://echo.services.core.carbon.wso2.org">
+                <in xmlns="">$1</in>
+            </echoInt>
+        </format>
+        <args>
+            <arg evaluator="xml" expression="//body/age" literal="false" xmlns:ns="http://org.apache.synapse/xsd"/>
+        </args>
+    </payloadFactory>
+    <send>
+        <endpoint>
+            <http method="POST" uri-template="http://DESKTOP-PJN44T9:8280/services/echo.echoHttpSoap11Endpoint"/>
+        </endpoint>
+    </send>
+</sequence>
