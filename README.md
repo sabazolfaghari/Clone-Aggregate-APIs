@@ -26,7 +26,7 @@ The API works by:
 
 2. **Test with Postman or curl**
 
-**Example request:**
+## Example request
 ```bash
 curl --location 'http://localhost:8280/parallel/calls' \
 --header 'Content-Type: application/json' \
@@ -41,3 +41,10 @@ curl --location 'http://localhost:8280/parallel/calls' \
   </soapenv:Body>
 </soapenv:Envelope>
 '
+```
+
+** Example Resonse
+```bash
+<ns:echoStringResponse xmlns:ns="http://echo.services.core.carbon.wso2.org">
+    <return>Alex</return>
+</ns:echoStringResponse>
