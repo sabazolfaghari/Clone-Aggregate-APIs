@@ -43,7 +43,7 @@ curl --location 'http://localhost:8280/parallel/calls' \
 '
 ```
 
-** Example Resonse
+## Example Resonse
 ```bash
 <ns:echoStringResponse xmlns:ns="http://echo.services.core.carbon.wso2.org">
     <return>Alex</return>
